@@ -188,3 +188,26 @@ function createEmployee(salary: number | string): Teacher | Director {
   }
   return new Director();
 }
+
+// Function to create specific employee types
+function isDirector(employee: Director | Teacher): employee is Director {
+  return (employee as Director).workDirectorTasks !== undefined;
+}
+function executeWork(employee: Director | Teacher): string {
+  if (isDirector(employee)) {
+    return employee.workDirectorTasks();
+  }
+  return employee.workTeacherTasks();
+}
+// Define a string literal type
+type Subjects = "Math" | "History";
+
+// Define the function that accepts only values of type Subjects
+function teachClass(todayClass: Subjects): string {
+  if (todayClass === "Math") {
+    return "Teaching Math";
+  } else {
+    return "Teaching History";
+  }
+}
+
