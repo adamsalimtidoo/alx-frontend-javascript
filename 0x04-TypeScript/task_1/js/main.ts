@@ -141,3 +141,50 @@ class StudentClass implements StudentClassInterface {
   }
 }
 
+// Create Director Interface
+interface DirectorInterface {
+  workFromHome(): string;
+  getCoffeeBreak(): string;
+  workDirectorTasks(): string;
+}
+// Implementing the Director Interface
+class DirectorClass implements DirectorInterface {
+  workFromHome(): string {
+    return "Working from home";
+  }
+
+  getCoffeeBreak(): string {
+    return "Getting a coffee break";
+  }
+
+  workDirectorTasks(): string {
+    return "Working on director tasks";
+  }
+}
+// Create Teacher Interface
+interface TeacherInterface {
+  workFromHome(): string;
+  getCoffeeBreak(): string;
+  workDirectorTasks(): string;
+}
+// Implementing the Teacher Interface
+class TeacherClass implements TeacherInterface {
+  workFromHome(): string {
+    return "Working from home";
+  }
+
+  getCoffeeBreak(): string {
+    return "Getting a coffee break";
+  }
+
+  workDirectorTasks(): string {
+    return "Working on teacher tasks";
+  }
+}
+// Function to create a new employee
+function createEmployee(salary: number | string): Teacher | Director {
+  if (typeof salary === "number" && salary < 500) {
+    return new Teacher();
+  }
+  return new Director();
+}
